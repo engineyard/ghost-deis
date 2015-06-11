@@ -1,6 +1,9 @@
 var errors  = require('../errors'),
     config  = require('../config'),
-    storage = {};
+    storage = require('ghost-s3')({
+        errors: errors,
+        config: require('../config').aws
+    });
 
 function getStorage(storageChoice) {
     var storagePath,
