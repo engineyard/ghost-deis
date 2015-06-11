@@ -12,7 +12,16 @@ config = {
     // Configure your URL and mail settings here
     production: {
         url: process.env.DOMAIN,
-        mail: {},
+        mail: {
+            transport: 'SMTP',
+            options: {
+                service: process.env.MAIL_SERVICE,
+                auth: {
+                    user: process.env.MAIL_USER,
+                    pass: process.env.MAIL_PASS
+                }
+            }
+        },
         database: {
             client: 'mysql',
             connection: {
